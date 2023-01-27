@@ -36,10 +36,10 @@ public class ToyFactory {
     }
 
     public ToyFactory() {
-        stock.put("furs", 1000);
-        stock.put("fillings", 1000);
-        stock.put("noses", 1000);
-        stock.put("eyes", 1000);
+        stock.put("furs", 0);
+        stock.put("fillings", 0);
+        stock.put("noses", 0);
+        stock.put("eyes", 0);
     }
 
     @Override
