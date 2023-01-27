@@ -37,6 +37,8 @@ public class Main {
 
             simulationHour++;
 
+            tf.makeToys();
+
             for (ComponentManufacturer cm : manufacturers) {
                 if (cm.makeComponents()) {
                     deliveries.add(new Delivery(simulationHour + cm.getTravelTimeHours(), cm.getPartType(), cm.getPackageSize()));
@@ -52,8 +54,6 @@ public class Main {
                     i.remove();
                 }
             }
-
-            tf.makeToys();
 
         }
 
