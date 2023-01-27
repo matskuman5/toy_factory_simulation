@@ -21,6 +21,7 @@ public class Main {
         ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
 
         int simulationHour = 0;
+        double efficienciesSum = 0;
 
         while (tf.getToysFinished() < Config.TOY_TOTAL_PRODUCTION) {
 
@@ -39,7 +40,7 @@ public class Main {
 
             simulationHour++;
 
-            tf.makeToys();
+            efficienciesSum += tf.makeToys();
 
             for (ComponentManufacturer cm : manufacturers) {
                 if (cm.makeComponents()) {
@@ -62,6 +63,7 @@ public class Main {
         System.out.println("Simulation finished!");
         System.out.println("Hours passed: " + simulationHour);
         System.out.println("Toys produced: " + tf.getToysFinished());
+        System.out.println("Average efficiency: " + efficienciesSum / simulationHour);
 
     }
     

@@ -14,7 +14,7 @@ public class ToyFactory {
         stock.put(d.getPartType(), stock.get(d.getPartType()) + d.getSize());
     }
 
-    public void makeToys() {
+    public double makeToys() {
 
         // find what parts we have the least of
         int least = -1;
@@ -37,6 +37,10 @@ public class ToyFactory {
             stock.put(part, stock.get(part) - least);
         }
         toysFinished += least;
+
+        // return what percentage of max production rate is actually achieved
+        return ((double) least) / Config.TOY_PRODUCTION_RATE;
+
     }
 
     public ToyFactory() {
