@@ -10,6 +10,10 @@ public class ToyFactory {
         return toysFinished;
     }
 
+    public void receiveDelivery(Delivery d) {
+        stock.put(d.getPartType(), stock.get(d.getPartType()) + d.getSize());
+    }
+
     public void makeToys() {
 
         // find what parts we have the least of

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
@@ -42,9 +43,13 @@ public class Main {
                 }
             }
 
-            for (Delivery d : deliveries) {
+            Iterator<Delivery> i = deliveries.iterator();
+
+            while (i.hasNext()) {
+                Delivery d = i.next();
                 if (simulationHour == d.getArrivalHour()) {
-                    // TODO: "unpack" delivery and add parts to toy factory
+                    tf.receiveDelivery(d);
+                    i.remove();
                 }
             }
 
