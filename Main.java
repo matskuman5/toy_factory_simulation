@@ -22,14 +22,14 @@ public class Main {
 
         ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
 
-        int simulationHour = 0;
+        int simulationHoursPassed = 0;
         LocalDateTime simulationDate = Config.SIMULATION_BEGINNING;
         double efficienciesSum = 0;
 
         while (tf.getToysFinished() < Config.TOY_TOTAL_PRODUCTION) {
 
             if (Config.VERBOSE) {
-                System.out.println("simulation hours passed: " + simulationHour);
+                System.out.println("simulation hours passed: " + simulationHoursPassed);
                 System.out.println(tf.toString());
                 for (Delivery d : deliveries) {
                     System.out.println(d);
@@ -37,11 +37,11 @@ public class Main {
                 System.out.println("---------" + "\n");
             }
 
-            if (simulationHour >= Config.SIMULATION_HOURS_CAP && Config.SIMULATION_HOURS_CAP != -1) {
+            if (simulationHoursPassed >= Config.SIMULATION_HOURS_CAP && Config.SIMULATION_HOURS_CAP != -1) {
                 break;
             }
 
-            simulationHour++;
+            simulationHoursPassed++;
             simulationDate = simulationDate.plusHours(1);
 
             efficienciesSum += tf.makeToys();
@@ -50,11 +50,11 @@ public class Main {
                 if (cm.makeComponents()) {
                     if (simulationDate.getMonth() == Month.DECEMBER) {
                         if (Math.random() > 0.2) {
-                            deliveries.add(new Delivery(simulationHour + cm.getTravelTimeHours() * 2, cm.getPart(), cm.getPackageSize()));
+                            deliveries.add(new Delivery(simulationHoursPassed + cm.getTravelTimeHours() * 2, cm.getPart(), cm.getPackageSize()));
                         }
                     }
                     else {
-                        deliveries.add(new Delivery(simulationHour + cm.getTravelTimeHours(), cm.getPart(), cm.getPackageSize()));
+                        deliveries.add(new Delivery(simulationHoursPassed + cm.getTravelTimeHours(), cm.getPart(), cm.getPackageSize()));
                     }
                 }
             }
@@ -63,7 +63,7 @@ public class Main {
 
             while (i.hasNext()) {
                 Delivery d = i.next();
-                if (simulationHour == d.getArrivalHour()) {
+                if (simulationHoursPassed == d.getArrivalHour()) {
                     tf.receiveDelivery(d);
                     i.remove();
                 }
@@ -73,9 +73,9 @@ public class Main {
 
         System.out.println("Simulation finished!");
         System.out.println("Simulation started at " + Config.SIMULATION_BEGINNING + " and ended at " + simulationDate);
-        System.out.println("Hours passed: " + simulationHour);
+        System.out.println("Hours passed: " + simulationHoursPassed);
         System.out.println("Toys produced: " + tf.getToysFinished());
-        System.out.println("Average efficiency: " + efficienciesSum / simulationHour);
+        System.out.println("Average efficiency: " + efficienciesSum / simulationHoursPassed);
 
     }
     
