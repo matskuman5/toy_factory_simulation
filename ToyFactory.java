@@ -14,4 +14,10 @@ public class ToyFactory {
     public ToyFactory() {
     }
 
+    @Override
+    public String toString() {
+        return "ToyFactory [fursInStock=" + fursInStock + ", fillingsInStock=" + fillingsInStock + ", nosesInStock="
+                + nosesInStock + ", eyesInStock=" + eyesInStock + ", toysFinished=" + toysFinished + "]";
+    }
+
 }
