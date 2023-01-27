@@ -1,5 +1,7 @@
 public class ComponentManufacturer {
 
+    public int stock;
+
     private int componentsPerHour;
     public int getComponentsPerHour() {
         return componentsPerHour;
