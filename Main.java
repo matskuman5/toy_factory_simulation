@@ -31,6 +31,8 @@ public class Main {
                 }
             }
 
+            tf.makeToys();
+
             System.out.println("simulation hour: " + simulationHour);
             System.out.println(tf.toString());
             System.out.println("---------" + "\n");
