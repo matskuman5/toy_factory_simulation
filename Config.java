@@ -18,5 +18,5 @@ public final class Config {
     public static final int TOY_PRODUCTION_RATE = 500;
     public static final int TOY_TOTAL_PRODUCTION = 1000000;
 
-    public static final int SIMULATION_HOURS_CAP = 10; // -1 = not capped
+    public static final int SIMULATION_HOURS_CAP = -1; // -1 = not capped
 }
