@@ -24,12 +24,14 @@ public class Main {
 
         while (tf.getToysFinished() < Config.TOY_TOTAL_PRODUCTION) {
 
-            System.out.println("simulation hours passed: " + simulationHour);
-            System.out.println(tf.toString());
-            for (Delivery d : deliveries) {
-                System.out.println(d);
+            if (Config.VERBOSE) {
+                System.out.println("simulation hours passed: " + simulationHour);
+                System.out.println(tf.toString());
+                for (Delivery d : deliveries) {
+                    System.out.println(d);
+                }
+                System.out.println("---------" + "\n");
             }
-            System.out.println("---------" + "\n");
 
             if (simulationHour >= Config.SIMULATION_HOURS_CAP && Config.SIMULATION_HOURS_CAP != -1) {
                 break;
