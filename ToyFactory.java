@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 public class ToyFactory {
 
-    private HashMap<String, Integer> stock = new HashMap<String, Integer>();
+    private HashMap<PartType, Integer> stock = new HashMap<PartType, Integer>();
 
     private int toysFinished = 0;
 
@@ -18,9 +18,9 @@ public class ToyFactory {
 
         // find what parts we have the least of
         int least = -1;
-        for (String part : stock.keySet()) {
+        for (PartType part : stock.keySet()) {
             int amount = stock.get(part);
-            if (part == "eyes") {
+            if (part == PartType.EYE) {
                 amount = amount / 2;
             }
             if (least == -1) least = amount;
@@ -33,7 +33,7 @@ public class ToyFactory {
         }
 
         // then reduce our stocks and add finished toys accordingly
-        for (String part : stock.keySet()) {
+        for (PartType part : stock.keySet()) {
             stock.put(part, stock.get(part) - least);
         }
         toysFinished += least;
@@ -44,16 +44,16 @@ public class ToyFactory {
     }
 
     public ToyFactory() {
-        stock.put("furs", 0);
-        stock.put("fillings", 0);
-        stock.put("noses", 0);
-        stock.put("eyes", 0);
+        stock.put(PartType.FUR, 0);
+        stock.put(PartType.FILLING, 0);
+        stock.put(PartType.NOSE, 0);
+        stock.put(PartType.EYE, 0);
     }
 
     @Override
     public String toString() {
         String s = "";
-        for (String part : stock.keySet()) {
+        for (PartType part : stock.keySet()) {
             s += part + ", amount: " + stock.get(part) + "\n";
         }
         s += "\n" + "toys finished: " + toysFinished;

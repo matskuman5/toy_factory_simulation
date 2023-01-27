@@ -1,10 +1,10 @@
 public class ComponentManufacturer {
 
     private int stock = 0;
-    private String partType;
+    private PartType part;
 
-    public String getPartType() {
-        return partType;
+    public PartType getPart() {
+        return part;
     }
 
     private int componentsPerHour;
@@ -31,11 +31,11 @@ public class ComponentManufacturer {
         return false;
     }
 
-    public ComponentManufacturer(int componentsPerHour, int packageSize, int travelTimeHours, String partType) {
+    public ComponentManufacturer(int componentsPerHour, int packageSize, int travelTimeHours, PartType part) {
         this.componentsPerHour = componentsPerHour;
         this.packageSize = packageSize;
         this.travelTimeHours = travelTimeHours;
-        this.partType = partType;
+        this.part = part;
     }
 
 }

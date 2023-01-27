@@ -5,9 +5,9 @@ public class Delivery {
         return arrivalHour;
     }
 
-    private String partType;
-    public String getPartType() {
-        return partType;
+    private PartType part;
+    public PartType getPartType() {
+        return part;
     }
 
     private int size;
@@ -15,15 +15,15 @@ public class Delivery {
         return size;
     }
 
-    public Delivery(int arrivalHour, String partType, int size) {
+    public Delivery(int arrivalHour, PartType part, int size) {
         this.arrivalHour = arrivalHour;
-        this.partType = partType;
+        this.part = part;
         this.size = size;
     }
 
     @Override
     public String toString() {
-        return "Delivery [arrivalHour=" + arrivalHour + ", partType=" + partType + ", size=" + size + "]";
+        return "Delivery [arrivalHour=" + arrivalHour + ", part=" + part + ", size=" + size + "]";
     }
 
 }

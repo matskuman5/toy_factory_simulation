@@ -6,10 +6,10 @@ public class Main {
 
         ToyFactory tf = new ToyFactory();
 
-        ComponentManufacturer furManufacturer = new ComponentManufacturer(Config.FUR_PRODUCTION_RATE, Config.FUR_PACKAGE_SIZE, Config.FUR_TRAVEL_TIME_HOURS, "furs");
-        ComponentManufacturer fillingManufacturer = new ComponentManufacturer(Config.FILLING_PRODUCTION_RATE, Config.FILLING_PACKAGE_SIZE, Config.FILLING_TRAVEL_TIME_HOURS, "fillings");
-        ComponentManufacturer noseManufacturer = new ComponentManufacturer(Config.NOSE_PRODUCTION_RATE, Config.NOSE_PACKAGE_SIZE, Config.NOSE_TRAVEL_TIME_HOURS, "noses");
-        ComponentManufacturer eyeManufacturer = new ComponentManufacturer(Config.EYE_PRODUCTION_RATE, Config.EYE_PACKAGE_SIZE, Config.EYE_TRAVEL_TIME_HOURS, "eyes");
+        ComponentManufacturer furManufacturer = new ComponentManufacturer(Config.FUR_PRODUCTION_RATE, Config.FUR_PACKAGE_SIZE, Config.FUR_TRAVEL_TIME_HOURS, PartType.FUR);
+        ComponentManufacturer fillingManufacturer = new ComponentManufacturer(Config.FILLING_PRODUCTION_RATE, Config.FILLING_PACKAGE_SIZE, Config.FILLING_TRAVEL_TIME_HOURS, PartType.FILLING);
+        ComponentManufacturer noseManufacturer = new ComponentManufacturer(Config.NOSE_PRODUCTION_RATE, Config.NOSE_PACKAGE_SIZE, Config.NOSE_TRAVEL_TIME_HOURS, PartType.NOSE);
+        ComponentManufacturer eyeManufacturer = new ComponentManufacturer(Config.EYE_PRODUCTION_RATE, Config.EYE_PACKAGE_SIZE, Config.EYE_TRAVEL_TIME_HOURS, PartType.EYE);
 
         ArrayList<ComponentManufacturer> manufacturers = new ArrayList<ComponentManufacturer>();
 
@@ -44,7 +44,7 @@ public class Main {
 
             for (ComponentManufacturer cm : manufacturers) {
                 if (cm.makeComponents()) {
-                    deliveries.add(new Delivery(simulationHour + cm.getTravelTimeHours(), cm.getPartType(), cm.getPackageSize()));
+                    deliveries.add(new Delivery(simulationHour + cm.getTravelTimeHours(), cm.getPart(), cm.getPackageSize()));
                 }
             }
 
