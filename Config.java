@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+
 public final class Config {
     public static final int FUR_PRODUCTION_RATE = 40;
     public static final int FUR_PACKAGE_SIZE = 200;
@@ -19,6 +21,7 @@ public final class Config {
     public static final int TOY_TOTAL_PRODUCTION = 1000000;
 
     public static final int SIMULATION_HOURS_CAP = -1; // -1 = not capped
+    public static final LocalDateTime SIMULATION_BEGINNING = LocalDateTime.of(2023, 4, 1, 0, 0);
 
     public static final boolean VERBOSE = false;
 }

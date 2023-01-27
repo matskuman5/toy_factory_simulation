@@ -61,6 +61,7 @@ public class Main {
         }
 
         System.out.println("Simulation finished!");
+        System.out.println("Simulation started at " + Config.SIMULATION_BEGINNING + " and ended at " + Config.SIMULATION_BEGINNING.plusHours(simulationHour));
         System.out.println("Hours passed: " + simulationHour);
         System.out.println("Toys produced: " + tf.getToysFinished());
         System.out.println("Average efficiency: " + efficienciesSum / simulationHour);
