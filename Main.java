@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -21,6 +23,7 @@ public class Main {
         ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
 
         int simulationHour = 0;
+        LocalDateTime simulationDate = Config.SIMULATION_BEGINNING;
         double efficienciesSum = 0;
 
         while (tf.getToysFinished() < Config.TOY_TOTAL_PRODUCTION) {
@@ -39,12 +42,20 @@ public class Main {
             }
 
             simulationHour++;
+            simulationDate = simulationDate.plusHours(1);
 
             efficienciesSum += tf.makeToys();
 
             for (ComponentManufacturer cm : manufacturers) {
                 if (cm.makeComponents()) {
-                    deliveries.add(new Delivery(simulationHour + cm.getTravelTimeHours(), cm.getPart(), cm.getPackageSize()));
+                    if (simulationDate.getMonth() == Month.DECEMBER) {
+                        if (Math.random() > 0.2) {
+                            deliveries.add(new Delivery(simulationHour + cm.getTravelTimeHours() * 2, cm.getPart(), cm.getPackageSize()));
+                        }
+                    }
+                    else {
+                        deliveries.add(new Delivery(simulationHour + cm.getTravelTimeHours(), cm.getPart(), cm.getPackageSize()));
+                    }
                 }
             }
 
@@ -61,7 +72,7 @@ public class Main {
         }
 
         System.out.println("Simulation finished!");
-        System.out.println("Simulation started at " + Config.SIMULATION_BEGINNING + " and ended at " + Config.SIMULATION_BEGINNING.plusHours(simulationHour));
+        System.out.println("Simulation started at " + Config.SIMULATION_BEGINNING + " and ended at " + simulationDate);
         System.out.println("Hours passed: " + simulationHour);
         System.out.println("Toys produced: " + tf.getToysFinished());
         System.out.println("Average efficiency: " + efficienciesSum / simulationHour);
