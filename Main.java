@@ -21,6 +21,14 @@ public class Main {
 
         while (tf.getToysFinished() < Config.TOY_TOTAL_PRODUCTION) {
 
+            System.out.println("simulation hours passed: " + simulationHour);
+            System.out.println(tf.toString());
+            System.out.println("---------" + "\n");
+
+            if (simulationHour >= Config.SIMULATION_HOURS_CAP && Config.SIMULATION_HOURS_CAP != -1) {
+                break;
+            }
+
             simulationHour++;
 
             for (ComponentManufacturer cm : manufacturers) {
@@ -33,9 +41,6 @@ public class Main {
 
             tf.makeToys();
 
-            System.out.println("simulation hour: " + simulationHour);
-            System.out.println(tf.toString());
-            System.out.println("---------" + "\n");
         }
 
     }
