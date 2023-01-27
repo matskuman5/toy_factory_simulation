@@ -59,6 +59,10 @@ public class Main {
 
         }
 
+        System.out.println("Simulation finished!");
+        System.out.println("Hours passed: " + simulationHour);
+        System.out.println("Toys produced: " + tf.getToysFinished());
+
     }
     
 }
