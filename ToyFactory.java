@@ -18,7 +18,11 @@ public class ToyFactory {
 
         // find what parts we have the least of
         int least = -1;
-        for (Integer amount : stock.values()) {
+        for (String part : stock.keySet()) {
+            int amount = stock.get(part);
+            if (part == "eyes") {
+                amount = amount / 2;
+            }
             if (least == -1) least = amount;
             else if (least > amount) least = amount;
         }
