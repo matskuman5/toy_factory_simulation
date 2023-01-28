@@ -28,7 +28,7 @@ public class Main {
         LocalDateTime simulationDate = Config.SIMULATION_BEGINNING;
         double efficienciesSum = 0;
 
-        while (tf.getToysFinished() < Config.TOY_TOTAL_PRODUCTION) {
+        while (tf.getToysFinished() < Config.TOY_TOTAL_PRODUCTION_TARGET) {
 
             if (Config.VERBOSE) {
                 System.out.println("simulation hours passed: " + simulationHoursPassed);
