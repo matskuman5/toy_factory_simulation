@@ -15,12 +15,7 @@ public class Main {
         ComponentManufacturer noseManufacturer = new ComponentManufacturer(Config.NOSE_PRODUCTION_RATE, Config.NOSE_PACKAGE_SIZE, Config.NOSE_TRAVEL_TIME_HOURS, PartType.NOSE);
         ComponentManufacturer eyeManufacturer = new ComponentManufacturer(Config.EYE_PRODUCTION_RATE, Config.EYE_PACKAGE_SIZE, Config.EYE_TRAVEL_TIME_HOURS, PartType.EYE);
 
-        List<ComponentManufacturer> manufacturers = new ArrayList<ComponentManufacturer>();
-
-        manufacturers.add(furManufacturer);
-        manufacturers.add(fillingManufacturer);
-        manufacturers.add(noseManufacturer);
-        manufacturers.add(eyeManufacturer);
+        List<ComponentManufacturer> manufacturers = List.of(furManufacturer, fillingManufacturer, noseManufacturer, eyeManufacturer);
 
         List<Delivery> deliveries = new ArrayList<Delivery>();
 
