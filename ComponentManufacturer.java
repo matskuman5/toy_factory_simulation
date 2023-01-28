@@ -1,8 +1,14 @@
 public class ComponentManufacturer {
 
     private int stock = 0;
-    private PartType part;
+    
+    private boolean sabotaged = false;
 
+    public void setSabotaged(boolean sabotaged) {
+        this.sabotaged = sabotaged;
+    }
+
+    private PartType part;
     public PartType getPart() {
         return part;
     }
@@ -23,6 +29,9 @@ public class ComponentManufacturer {
     }
 
     public int makeComponents() {
+        if (sabotaged) {
+            return 0;
+        }
         stock += componentsPerHour;
         if (stock >= packageSize) {
             int packages = stock / packageSize;

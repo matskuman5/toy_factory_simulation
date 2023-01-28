@@ -1,3 +1,4 @@
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class Main {
         ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
 
         int simulationHoursPassed = 0;
+        int fixSabotageHour = 0;
         LocalDateTime simulationDate = Config.SIMULATION_BEGINNING;
         double efficienciesSum = 0;
 
@@ -45,6 +47,17 @@ public class Main {
             simulationDate = simulationDate.plusHours(1);
 
             efficienciesSum += tf.makeToys();
+
+            if (simulationHoursPassed == fixSabotageHour) {
+                noseManufacturer.setSabotaged(false);
+            }
+
+            if (simulationDate.getDayOfWeek() == DayOfWeek.MONDAY && simulationDate.getHour() == 0) {
+                if (Math.random() > 0.9) {
+                    noseManufacturer.setSabotaged(true);
+                    fixSabotageHour = simulationHoursPassed + 12;
+                }
+            }
 
             for (ComponentManufacturer cm : manufacturers) {
                 int packages = cm.makeComponents();
