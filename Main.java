@@ -3,6 +3,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,14 +15,14 @@ public class Main {
         ComponentManufacturer noseManufacturer = new ComponentManufacturer(Config.NOSE_PRODUCTION_RATE, Config.NOSE_PACKAGE_SIZE, Config.NOSE_TRAVEL_TIME_HOURS, PartType.NOSE);
         ComponentManufacturer eyeManufacturer = new ComponentManufacturer(Config.EYE_PRODUCTION_RATE, Config.EYE_PACKAGE_SIZE, Config.EYE_TRAVEL_TIME_HOURS, PartType.EYE);
 
-        ArrayList<ComponentManufacturer> manufacturers = new ArrayList<ComponentManufacturer>();
+        List<ComponentManufacturer> manufacturers = new ArrayList<ComponentManufacturer>();
 
         manufacturers.add(furManufacturer);
         manufacturers.add(fillingManufacturer);
         manufacturers.add(noseManufacturer);
         manufacturers.add(eyeManufacturer);
 
-        ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
+        List<Delivery> deliveries = new ArrayList<Delivery>();
 
         int simulationHoursPassed = 0;
         int fixSabotageHour = 0;
