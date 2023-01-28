@@ -28,6 +28,7 @@ public class ComponentManufacturer {
         return travelTimeHours;
     }
 
+    // attempt to make components, returns the amount of packages produced
     public int makeComponents() {
         if (sabotaged) {
             return 0;

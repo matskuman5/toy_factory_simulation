@@ -2,6 +2,7 @@ import java.util.HashMap;
 
 public class ToyFactory {
 
+    // stores how many of each part we have in stock
     private HashMap<PartType, Integer> stock = new HashMap<PartType, Integer>();
 
     private int toysFinished = 0;
@@ -14,6 +15,7 @@ public class ToyFactory {
         stock.put(d.getPartType(), stock.get(d.getPartType()) + d.getSize());
     }
 
+    // attempt to make toys from our part stock, returns production efficiency
     public double makeToys() {
 
         // find what parts we have the least of

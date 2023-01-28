@@ -28,6 +28,7 @@ public class Main {
         LocalDateTime simulationDate = Config.SIMULATION_BEGINNING;
         double efficienciesSum = 0;
 
+        // main simulation loop
         while (tf.getToysFinished() < Config.TOY_TOTAL_PRODUCTION_TARGET) {
 
             if (Config.VERBOSE) {
@@ -52,6 +53,7 @@ public class Main {
                 noseManufacturer.setSabotaged(false);
             }
 
+            // sabotage is attempted once a week and has a 10% chance of success
             if (simulationDate.getDayOfWeek() == DayOfWeek.MONDAY && simulationDate.getHour() == 0) {
                 if (Math.random() > 0.9) {
                     noseManufacturer.setSabotaged(true);
@@ -62,6 +64,7 @@ public class Main {
             for (ComponentManufacturer cm : manufacturers) {
                 int packages = cm.makeComponents();
                     for (int i = 0; i < packages; i++) {
+                        // in December, deliveries take twice as long and have a 20% chance of failing
                         if (simulationDate.getMonth() == Month.DECEMBER) {
                             if (Math.random() > 0.2) {
                                 deliveries.add(new Delivery(simulationHoursPassed + cm.getTravelTimeHours() * 2, cm.getPart(), cm.getPackageSize()));
@@ -73,8 +76,8 @@ public class Main {
                     }
             }
 
+            // use an iterator so we can safely delete deliveries while looping through them
             Iterator<Delivery> i = deliveries.iterator();
-
             while (i.hasNext()) {
                 Delivery d = i.next();
                 if (simulationHoursPassed == d.getArrivalHour()) {
