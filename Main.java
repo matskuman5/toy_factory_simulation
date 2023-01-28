@@ -47,16 +47,17 @@ public class Main {
             efficienciesSum += tf.makeToys();
 
             for (ComponentManufacturer cm : manufacturers) {
-                if (cm.makeComponents()) {
-                    if (simulationDate.getMonth() == Month.DECEMBER) {
-                        if (Math.random() > 0.2) {
-                            deliveries.add(new Delivery(simulationHoursPassed + cm.getTravelTimeHours() * 2, cm.getPart(), cm.getPackageSize()));
+                int packages = cm.makeComponents();
+                    for (int i = 0; i < packages; i++) {
+                        if (simulationDate.getMonth() == Month.DECEMBER) {
+                            if (Math.random() > 0.2) {
+                                deliveries.add(new Delivery(simulationHoursPassed + cm.getTravelTimeHours() * 2, cm.getPart(), cm.getPackageSize()));
+                            }
+                        }
+                        else {
+                            deliveries.add(new Delivery(simulationHoursPassed + cm.getTravelTimeHours(), cm.getPart(), cm.getPackageSize()));
                         }
                     }
-                    else {
-                        deliveries.add(new Delivery(simulationHoursPassed + cm.getTravelTimeHours(), cm.getPart(), cm.getPackageSize()));
-                    }
-                }
             }
 
             Iterator<Delivery> i = deliveries.iterator();

@@ -22,13 +22,14 @@ public class ComponentManufacturer {
         return travelTimeHours;
     }
 
-    public boolean makeComponents() {
+    public int makeComponents() {
         stock += componentsPerHour;
         if (stock >= packageSize) {
-            stock -= packageSize;
-            return true;
+            int packages = stock / packageSize;
+            stock -= packages * packageSize;
+            return packages;
         }
-        return false;
+        return 0;
     }
 
     public ComponentManufacturer(int componentsPerHour, int packageSize, int travelTimeHours, PartType part) {
